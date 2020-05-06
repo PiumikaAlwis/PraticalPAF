@@ -23,15 +23,15 @@ if (status != true) {
 }
 
 // If valid------------------------
-var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+var type = ($("#hidIDSave").val() == "") ? "POST" : "PUT";
 
 $.ajax({
 	url : "HospitalAPI",
-	type : method,
+	type : type,
 	data : $("#formHospital").serialize(),
 	dataType : "text",
 	complete : function(response, status) {
-		onItemSaveComplete(response.responseText, status);
+		onHospitalSaveComplete(response.responseText, status);
 	}
 });
 
@@ -45,7 +45,7 @@ function onHospitalSaveComplete(response, status)
 		{
 			$("#alertSuccess").text("Successfully saved.");
 			$("#alertSuccess").show();
-			$("#divItemsGrid").html(resultSet.data);
+			$("#divHospitalGrid").html(resultSet.data);
 		} 
 		else if (resultSet.status.trim() == "error"){
 			$("#alertError").text(resultSet.data);
@@ -65,7 +65,7 @@ function onHospitalSaveComplete(response, status)
 		$("#formHospital")[0].reset(); 
 }
 
-// UPDATE==========================================
+/*// UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event) {
 	$("#hidIDSave").val($(this).closest("tr").find('#hidIDUpdate').val());
 	$("#hospitalname").val($(this).closest("tr").find('td:eq(0)').text());
@@ -80,7 +80,7 @@ $(document).on("click", "_btnRemove",function(event){
 	$.ajax({
 		url : "HospitalAPI",
 		type : "DELETE",
-		data : "hos_Id"+ $(this).data("hos_Id"),
+		data : "hos_Id="+ $(this).data("hos_Id"),
 		dataType : "text",
 		complete : function(response, status) {
 			onHospitalSaveComplete(response.responseText, status);
@@ -117,7 +117,7 @@ function  onHospitalDeleteComplelete(){
 //			$("#formHospital")[0].reset(); 
 	}
 }
-}
+}*/
 
 // CLIENT-MODEL================================================================
 function validateHospitalForm() {
@@ -130,7 +130,7 @@ function validateHospitalForm() {
 		return "Insert Hospital Address.";
 	}
 	// HOT-LINE-------------------------------
-	if ($("#hotlien").val().trim() == "") {
+	if ($("#hotline").val().trim() == "") {
 		return "Insert Emergency contact.";
 	}
 	/*
