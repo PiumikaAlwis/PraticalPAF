@@ -76,10 +76,10 @@
 	<br>
 	<div id="divHospitalGrid">
 	    
-	 <%
+	 <%-- <%
 	    Hospital hosObj = new Hospital();
 		out.print(hosObj.readHospital());
-	 %>
+	 %> --%>
  		
 		 
 </div>

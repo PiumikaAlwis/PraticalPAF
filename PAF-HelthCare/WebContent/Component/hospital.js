@@ -65,7 +65,7 @@ function onHospitalSaveComplete(response, status)
 		$("#formHospital")[0].reset(); 
 }
 
-/*// UPDATE==========================================
+// UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event) {
 	$("#hidIDSave").val($(this).closest("tr").find('#hidIDUpdate').val());
 	$("#hospitalname").val($(this).closest("tr").find('td:eq(0)').text());
@@ -113,11 +113,11 @@ function  onHospitalDeleteComplelete(){
 				$("#alertError").show();
 			}
 		
-//			$("#hidIDSave").val("");
-//			$("#formHospital")[0].reset(); 
+		$("#hidIDSave").val("");
+			$("#formHospital")[0].reset(); 
 	}
 }
-}*/
+}
 
 // CLIENT-MODEL================================================================
 function validateHospitalForm() {
@@ -133,12 +133,7 @@ function validateHospitalForm() {
 	if ($("#hotline").val().trim() == "") {
 		return "Insert Emergency contact.";
 	}
-	/*
-	 * // is numerical value var tmpPrice = $("#itemPrice").val().trim(); if
-	 * (!$.isNumeric(tmpPrice)) { return "Insert a numerical value for Item
-	 * Price."; } // convert to decimal price
-	 * $("#itemPrice").val(parseFloat(tmpPrice).toFixed(2));
-	 */
+	 
 
 	// CONTACT NUMBER
 	if ($("#contact").val().trim() == "") {

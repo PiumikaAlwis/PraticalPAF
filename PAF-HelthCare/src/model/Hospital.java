@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 public class Hospital {
 
+	//Hospital hosObj = new Hospital();
 	private Connection connect() {
 
 		Connection con = null;
@@ -138,63 +139,61 @@ public class Hospital {
 		return output;
 	}
 
-	/*
-	 * public String updateHospital(String hos_Id, String hospitalName, String
-	 * address, String hotline, String contactNumber, String disctription) {
-	 * 
-	 * String output = ""; try {
-	 * 
-	 * Connection con = connect();
-	 * 
-	 * if (con == null) { return
-	 * "Error while connecting to the database for updating."; }
-	 * 
-	 * // create a prepared statement String query =
-	 * "UPDATE Hospital SET hospitalName=?,address=?,hotline=?,contactNumber=?,disctription=? WHERE host_Id=?"
-	 * ;
-	 * 
-	 * PreparedStatement preparedStmt = con.prepareStatement(query);
-	 * 
-	 * // binding values preparedStmt.setString(1, hospitalName);
-	 * preparedStmt.setString(2, address); preparedStmt.setString(3, hotline);
-	 * preparedStmt.setString(4, contactNumber); preparedStmt.setString(5,
-	 * disctription); preparedStmt.setInt(6, Integer.parseInt(hos_Id));
-	 * 
-	 * // execute the statement preparedStmt.execute(); con.close(); String newHos =
-	 * readHospital(); output = "{\"status\":\"success\", \"data\": \"" + newHos +
-	 * "\"}"; } catch (Exception e) { output =
-	 * "{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";
-	 * System.err.println(e.getMessage()); }
-	 * 
-	 * return output; }
-	 * 
-	 * public String deleteHospital(String hos_Id) { String output = "";
-	 * 
-	 * try {
-	 * 
-	 * Connection con = connect();
-	 * 
-	 * if (con == null) { return
-	 * "Error while connecting to the database for deleting."; }
-	 * 
-	 * // create a prepared statement String query =
-	 * "delete from Hospital where hos_Id=?"; PreparedStatement preparedStmt =
-	 * con.prepareStatement(query);
-	 * 
-	 * // binding values preparedStmt.setInt(1, Integer.parseInt(hos_Id));
-	 * 
-	 * // execute the statement preparedStmt.execute(); con.close();
-	 * 
-	 * String newHos = readHospital(); output =
-	 * "{\"status\":\"success\", \"data\": \"" + newHos + "\"}"; }
-	 * 
-	 * catch (Exception e) {
-	 * 
-	 * output =
-	 * "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
-	 * System.err.println(e.getMessage()); } return output;
-	 * 
-	 * }
-	 */
+	public String updateHospital(String hos_Id, String hospitalName, String address, String hotline, String contactNumber, String disctription) {
+	 
+	String output = "";
+	try {
+	 Connection con = connect();
+	 
+	 if (con == null) {
+		 return "Error while connecting to the database for updating.";
+		 }
+	 
+	 // create a prepared statement 
+	 String query ="UPDATE Hospital SET hospitalName=?,address=?,hotline=?,contactNumber=?,disctription=? WHERE host_Id=?";
+	 
+	 PreparedStatement preparedStmt = con.prepareStatement(query);
+	 
+	 // binding values preparedStmt.setString(1, hospitalName);
+	 preparedStmt.setString(2, address); 
+	 preparedStmt.setString(3, hotline);
+	 preparedStmt.setString(4, contactNumber); 
+	 preparedStmt.setString(5,disctription); 
+	 preparedStmt.setInt(6, Integer.parseInt(hos_Id));
+	 
+	 // execute the statement 
+	 preparedStmt.execute(); con.close(); 
+	 String newHos = readHospital(); output = "{\"status\":\"success\", \"data\": \"" + newHos +"\"}"; 
+	 } catch (Exception e) { 
+		 output ="{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";
+	 System.err.println(e.getMessage()); 
+	 }
+	 return output; 
+	 }
+	 
+	
+	public String deleteHospital(String hos_Id) { String output = "";
+	 
+	try {
+	 Connection con = connect();
+	 
+	 if (con == null) { 
+		 return "Error while connecting to the database for deleting."; 
+	 }
+	 // create a prepared statement 
+	 String query = "delete from Hospital where hos_Id=?"; 
+	 PreparedStatement preparedStmt = con.prepareStatement(query);
+	  // binding values preparedStmt.setInt(1, Integer.parseInt(hos_Id));
+	 // execute the statement preparedStmt.execute(); con.close();
+	 String newHos = readHospital(); 
+	 output = "{\"status\":\"success\", \"data\": \"" + newHos + "\"}"; }
+	 
+	catch (Exception e) {
+	 output ="{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
+	System.err.println(e.getMessage()); 
+	} 
+	return output;
+	  }
+	 
 
 }
