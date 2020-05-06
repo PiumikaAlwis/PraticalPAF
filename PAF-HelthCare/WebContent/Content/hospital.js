@@ -27,7 +27,7 @@ var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
 
 $.ajax({
 	url : "HospitalAPI",
-	type : type,
+	type : method,
 	data : $("#formHospital").serialize(),
 	dataType : "text",
 	complete : function(response, status) {
@@ -87,6 +87,37 @@ $(document).on("click", "_btnRemove",function(event){
 		}
 	});
 });
+
+function  onHospitalDeleteComplelete(){
+	if(status == "success"){
+		{
+			var resultSet = JSON.parse(response);
+			
+			if (resultSet.status.trim() == "success")
+			{
+				$("#alertSuccess").text("Successfully deleted.");
+				$("#alertSuccess").show();
+				$("#divItemsGrid").html(resultSet.data);
+			} 
+			else if (resultSet.status.trim() == "error"){
+				$("#alertError").text(resultSet.data);
+				$("#alertError").show();
+			}
+			
+			else if (status == "error"){
+				$("#alertError").text("Error while deleting.");
+				$("#alertError").show();
+			} 
+			else{
+				$("#alertError").text("Unknown error while deleting..");
+				$("#alertError").show();
+			}
+		
+//			$("#hidIDSave").val("");
+//			$("#formHospital")[0].reset(); 
+	}
+}
+}
 
 // CLIENT-MODEL================================================================
 function validateHospitalForm() {
