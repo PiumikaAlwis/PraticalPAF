@@ -2,35 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
-<%-- <%
-	//Save---------------------------------
-	if (request.getParameter("hospitalname") != null) {
-		Hospital itemObj = new Hospital();
-		String stsMsg = "";
-
-		//Insert--------------------------
-		if (request.getParameter("hidIDSave") == "") {
-			stsMsg = itemObj.insertItem(request.getParameter("hospitalname"), request.getParameter("address"),
-					request.getParameter("hotline"),request.getParameter("contact"), request.getParameter("dis"));
-		} else
-
-		//Update----------------------
-		{
-			stsMsg = itemObj.updateItem(request.getParameter("hidIDSave"), request.getParameter("hospitalname"),
-					request.getParameter("address"), request.getParameter("hotline"),request.getParameter("contact"),
-					request.getParameter("dis"));
-		}
-		session.setAttribute("statusMsg", stsMsg);
-	}
-
-	//Delete-----------------------------
-	if (request.getParameter("hidIDDelete") != null) {
-		Hospital hosObj = new Hospital();
-		String stsMsg = hosObj.deleteHospital(request.getParameter("hidIDDelete"));
-		session.setAttribute("statusMsg", stsMsg);
-	}
-%>  --%>
-
 
 
 <!DOCTYPE html>
